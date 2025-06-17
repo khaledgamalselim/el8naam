@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>معرض الصور - جزارة الحج جميل الغنام</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: bold;
+    }
+    nav a:hover {
+      background-color: #bd7633d2;
+      color: #ffd700;
+    }
+    nav a.active {
+      background-color: #ffd700;
+      color: #000;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .gallery-header h2 {
+      color: #8B0000;
+      position: relative;
+      display: inline-block;
+    }
+    .gallery-header h2:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: #8B0000;
+      margin: 10px auto;
+    }
+    .gallery-categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .category-btn {
+      background: white;
+      border: 1px solid #8B0000;
+      color: #8B0000;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .category-btn:hover,
+    .category-btn.active {
+      background-color: #8B0000;
+      color: white;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    .gallery-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(139, 0, 0, 0.8);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: lightslategray;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>جزارة الحج جميل الغنام</h1>
+  <nav>
+    <a href="index.html">الصفحة الرئيسية</a>
+    <a href="Meinu.html">قائمة الأسعار</a>
+    <a href="Gallary.html" class="active">المعرض</a>
+    <a href="ConectUs.html">من نحن</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="gallery-header">
+    <h2>معرض منتجاتنا</h2>
+    <p>تصفح أجود أنواع اللحوم والحلويات التي نقدمها لعملائنا الكرام</p>
+  </div>
+
+  <div class="gallery-categories">
+    <button class="category-btn active" data-category="all">الكل</button>
+    <button class="category-btn" data-category="meat">لحوم طازجة</button>
+    <button class="category-btn" data-category="sweets">حلويات اللحوم</button>
+    <button class="category-btn" data-category="grills">مشويات</button>
+    <button class="category-btn" data-category="hawawshi">حواوشي</button>
+    <button class="category-btn" data-category="fatta">فتة وطواجن</button>
+  </div>
+
+  <div class="gallery-grid">
+    <!-- لحوم طازجة -->
+    <div class="gallery-item" data-category="meat">
+      <img src="لحوم مقطعة.jpg" alt="لحوم طازجة" class="gallery-img">
+      <div class="gallery-caption">لحوم طازجة مقطعة</div>
+    </div>
+    
+    <!-- حواوشي -->
+    <div class="gallery-item" data-category="hawawshi">
+      <img src="حواوشي 1.jpg" alt="حواوشي" class="gallery-img">
+      <div class="gallery-caption">حواوشي ميكس الغنام</div>
+    </div>
+    
+    <!-- حلويات لحوم -->
+    <div class="gallery-item" data-category="sweets">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="حلويات اللحوم" class="gallery-img">
+      <div class="gallery-caption">حلويات اللحوم الطازجة</div>
+    </div>
+    
+    <!-- مشويات -->
+    <div class="gallery-item" data-category="grills">
+      <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="مشويات" class="gallery-img">
+      <div class="gallery-caption">مشويات على الفحم</div>
+    </div>
+    
+    <!-- فتة -->
+    <div class="gallery-item" data-category="fatta">
+      <img src="مشكل لحوم.jpg" alt="فتة" class="gallery-img">
+      <div class="gallery-caption">مشكل لحوم</div>
+    </div>
+    
+    <!-- لحوم -->
+    <div class="gallery-item" data-category="meat">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="لحوم" class="gallery-img">
+      <div class="gallery-caption">لحوم مفرومة طازجة</div>
+    </div>
+    
+    <!-- حواوشي -->
+    <div class="gallery-item" data-category="hawawshi">
+      <img src="حواوشي.jpg" alt="حواوشي" class="gallery-img">
+      <div class="gallery-caption">حواوشي جبنة رومي</div>
+    </div>
+    
+    <!-- حلويات -->
+    <div class="gallery-item" data-category="sweets">
+      <img src="لحوم طازجة.jpg" alt="حلويات" class="gallery-img">
+      <div class="gallery-caption">لحوم بشكل مميز</div>
+    </div>
+    
+    <!-- طواجن -->
+    <div class="gallery-item" data-category="fatta">
+      <img src="فتة و طواجن.jpg" alt="طواجن" class="gallery-img">
+      <div class="gallery-caption">طاجن لحمة كوارع</div>
+    </div>
+    
+    <!-- مشويات -->
+    <div class="gallery-item" data-category="grills">
+      <img src="لحوم.jpg" alt="مشويات" class="gallery-img">
+      <div class="gallery-caption">لحوم طازه</div>
+    </div>
+    
+    <!-- حلويات -->
+    <div class="gallery-item" data-category="sweets">
+      <img src="رغيف كبدة وكفته.jpeg" alt="حلويات" class="gallery-img">
+      <div class="gallery-caption">رغيف كبدة وكفته</div>
+    </div>
+    
+    <!-- لحوم -->
+    <div class="gallery-item" data-category="meat">
+      <img src="قطع لحم ضأن مميزة.jpeg" alt="لحوم" class="gallery-img">
+      <div class="gallery-caption">قطع لحم ضأن مميزة</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>تحت إدارة: المعلم / أحمد جميل الغنام | تحت إشراف: المعلم / محمود جميل الغنام</p>
+  <p>هذا الموقع تحت إشراف: المهندس / خالد جمال</p>
+  <p>&copy;2025 جزارة الحج جميل الغنام. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+  // فلترة الصور حسب التصنيف
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // إزالة التنشيط من جميع الأزرار
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      // تنشيط الزر المحدد
+      btn.classList.add('active');
+      
+      const category = btn.dataset.category;
+      
+      // عرض الصور حسب التصنيف المحدد
+      galleryItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

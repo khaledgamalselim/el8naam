@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>جزارة الحج جميل الغنام</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: bold;
+    }
+    nav a:hover {
+      background-color: #bd7633d2;
+      color: #ffd700;
+    }
+    nav a.active {
+      background-color: #ffd700;
+      color: #000;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .hero-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      background-color: rgba(139, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+      margin: 3rem 0;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card h3 {
+      color: #8B0000;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #8B0000;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      text-align: center;
+      color: #8B0000;
+      margin: 2rem 0;
+      position: relative;
+    }
+    .section-title:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: #8B0000;
+      margin: 10px auto;
+    }
+    .products-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 2rem 0;
+    }
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 1rem;
+      text-align: center;
+    }
+    .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .phones {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 1rem 0;
+    }
+    .phone-number {
+      background: #f5f5f5;
+      padding: 8px 15px;
+      border-radius: 20px;
+      color: #8B0000;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: lightslategray;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>جزارة الحج جميل الغنام</h1>
+  <nav>
+    <a href="index.html" class="active">الصفحة الرئيسية</a>
+    <a href="Meinu.html">قائمة الأسعار</a>
+    <a href="Gallary.html">المعرض</a>
+    <a href="ConectUs.html">من نحن</a>
+  </nav>
+</header>
+
+<div class="container">
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="جزارة الحج جميل الغنام" class="hero-image">
+    <div class="hero-text">
+      <h2>أهلاً بكم في جزارة الحج جميل الغنام</h2>
+      <p>أجود أنواع اللحوم والحلويات منذ 1960</p>
+    </div>
+  </section>
+
+  <h2 class="section-title">لماذا تختارنا؟</h2>
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🥩</div>
+      <h3>لحوم طازجة</h3>
+      <p>نقدم أجود أنواع اللحوم الطازجة المختارة بعناية من أفضل المزارع</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👨‍🍳</div>
+      <h3>خبرة 60 عاماً</h3>
+      <p>أكثر من 60 عاماً من الخبرة في تقديم أفضل منتجات اللحوم</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚚</div>
+      <h3>توصيل سريع</h3>
+      <p>خدمة توصيل سريعة للمنازل في جميع أنحاء المنطقة</p>
+    </div>
+  </section>
+
+  <h2 class="section-title">منتجاتنا المميزة</h2>
+  <section class="products-showcase">
+    <div class="product-card">
+      <img src="حواوشي.jpg" alt="حلويات اللحوم" class="product-image">
+      <div class="product-info">
+        <h3>حواوشي</h3>
+        <p>أشهى الحلويات المصنوعة بأيدٍ خبيرة</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="لحوم طازجة.jpg" alt="لحوم طازجة" class="product-image">
+      <div class="product-info">
+        <h3>لحوم طازجة</h3>
+        <p>لحوم مختارة بعناية من أفضل المواشي</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="فتة و طواجن.jpg" alt="فتة وطواجن" class="product-image">
+      <div class="product-info">
+        <h3>فتة وطواجن</h3>
+        <p>أشهى الأطباق المعدة بأفضل الطرق</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="مشكل لحوم.jpg" alt="مشويات" class="product-image">
+      <div class="product-info">
+        <h3>مشكل لحوم</h3>
+        <p>مشويات على الفحم بأجود أنواع اللحوم</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-info">
+    <h2>تواصل معنا</h2>
+    <p><strong>العنوان:</strong> ميدان الونش، شارع الترولي، عين شمس الغربية</p>
+    
+    <div class="phones">
+      <a href="tel:01110253808" class="phone-number">01110253808</a>
+      <a href="tel:01002953078" class="phone-number">01002953078</a>
+      <a href="tel:01120669755" class="phone-number">01120669755</a>
+    </div>
+    
+    <p><strong>مواعيد العمل:</strong> يومياً من 12 ظهراً حتى 1 بعد منتصف الليل</p>
+    <p>يوجد توصيل للمنازل</p>
+  </section>
+</div>
+
+<footer>
+  <p>تحت إدارة: المعلم / أحمد جميل الغنام | تحت إشراف: المعلم / محمود جميل الغنام</p>
+  <p>هذا الموقع تحت إشراف: المهندس / خالد جمال</p>
+  <p>&copy;2025 جزارة الحج جميل الغنام. جميع الحقوق محفوظة.</p>
+</footer>
+
+</body>
+</html>
