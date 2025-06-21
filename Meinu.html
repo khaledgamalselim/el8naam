@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>جزارة الحج جميل الغنام</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: bold;
+    }
+    nav a:hover {
+      background-color: #bd7633d2;
+      color: #ffd700;
+    }
+    nav a.active {
+      background-color: #ffd700;
+      color: #000;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1.5rem;
+      display: flex;
+      gap: 20px;
+    }
+    .products-container {
+      flex: 1;
+    }
+    #searchBox {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .category {
+      margin-bottom: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+    .category h3 {
+      background-color: #8B0000;
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      padding: 5px 10px;
+      margin-top: 5px;
+      background-color: #8B0000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a30000;
+    }
+    .cart-sidebar {
+      width: 300px;
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 20px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #8B0000;
+      padding-bottom: 10px;
+    }
+    .cart-header h3 {
+      margin: 0;
+      color: #8B0000;
+    }
+    .cart-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+    }
+    .cart-item-info {
+      flex: 1;
+    }
+    .cart-item-actions {
+      display: flex;
+      gap: 5px;
+    }
+    .cart-item-actions button {
+      padding: 2px 5px;
+      font-size: 12px;
+    }
+    .price {
+      color: green;
+      font-weight: bold;
+    }
+    .cart-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid #8B0000;
+      font-size: 1.1rem;
+    }
+    .checkout-btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .checkout-btn:hover {
+      background-color: #a30000;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: lightslategray;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .cart-sidebar {
+        width: 100%;
+        position: static;
+        margin-top: 2rem;
+      }
+    }
+    
+    /* زر السلة العائم */
+    .floating-cart-btn {
+      position: fixed;
+      top: 100px;
+      left: 20px;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    .floating-cart-btn:hover {
+      background-color: #a30000;
+      transform: scale(1.1);
+    }
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #ffd700;
+      color: #000;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    /* إضافة مساحة للفوتر */
+    body {
+      padding-bottom: 60px;
+    }
+  </style>
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>جزارة الحج جميل الغنام</h1>
+  <nav>
+    <a href="index.html">الصفحة الرئيسية</a>
+    <a href="Meinu.html" class="active">قائمة الأسعار</a>
+    <a href="Gallary.html">المعرض</a>
+    <a href="ConectUs.html">من نحن</a>
+  </nav>
+</header>
+
+<!-- زر السلة العائم -->
+<button class="floating-cart-btn" onclick="scrollToCart()">
+  🛒
+  <span class="cart-badge" id="floating-cart-count">0</span>
+</button>
+
+<!-- ... (بقية الهيدر والقوائم كما هي) ... -->
+
+<div class="container">
+  <div class="products-container">
+
+    <div id="product-groups"></div>
+  </div>
+  
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>سلة المشتريات</h3>
+      <span id="cart-count">0</span>
+    </div>
+    <ul class="cart-items" id="cart"></ul>
+    <div class="cart-total">
+      <p id="total">الإجمالي: <span class="price">0</span> ج.م</p>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">إتمام الطلب</button>
+  </div>
+</div>
+
+<footer>
+  <p>تحت إدارة: المعلم / أحمد جميل الغنام | تحت إشراف: المعلم / محمود جميل الغنام</p>
+  <p>هذا الموقع تحت إشراف: المهندس / خالد جمال</p>
+  <p>&copy;2025 جزارة الحج جميل الغنام. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+const categories = {
+  "حواوشي": [
+    { name: "حواوشي ساده صغير", price: 25 },
+    { name: "حواوشي ساده وسط", price: 30 },
+    { name: "حواوشي ساده كبير", price: 35 },
+    { name: "حواوشي ساده جامبو", price: 40 },
+
+    { name: "حواوشي خضار ساده صغير", price: 40 },
+    { name: "حواوشي خضار ساده وسط", price: 45 },
+    { name: "حواوشي خضار ساده كبير", price: 50 },
+    { name: "حواوشي خضار ساده جامبو", price: 55 },
+
+    { name: "حواوشي جبنه رومي صغير", price: 50 },
+    { name: "حواوشي جبنه رومي وسط", price: 55 },
+    { name: "حواوشي جبنه رومي كبير", price: 60 },
+    { name: "حواوشي جبنه رومي جامبو", price: 65 },
+
+    { name: "حواوشي موتزاريلا صغير", price: 40 },
+    { name: "حواوشي موتزاريلا وسط", price: 45 },
+    { name: "حواوشي موتزاريلا كبير", price: 50 },
+    { name: "حواوشي موتزاريلا جامبو", price: 55 },
+
+    { name: "حواوشي جبنة شيدر صغير", price: 40 },
+    { name: "حواوشي جبنة شيدر وسط", price: 45 },
+    { name: "حواوشي جبنة شيدر كبير", price: 50 },
+    { name: "حواوشي جبنة شيدر جامبو", price: 55 },
+
+    { name: "حواوشي مكس جبن صغير", price: 50 },
+    { name: "حواوشي مكس جبن وسط", price: 55 },
+    { name: "حواوشي مكس جبن كبير", price: 60 },
+    { name: "حواوشي مكس جبن جامبو", price: 70 },
+
+    { name: "حواوشي ميكس الغنام صغير", price: 60 },
+    { name: "حواوشي ميكس الغنام وسط", price: 70 },
+    { name: "حواوشي ميكس الغنام كبير", price: 80 }
+  ],
+  "حلويات اللحوم": [
+    { name: "رغيف مشكل صغير", price: 35 },
+    { name: "رغيف مشكل وسط", price: 45 },
+    { name: "رغيف مشكل كبير", price: 55 },
+
+    { name: "رغيف لحمة راس صغير", price: 60 },
+    { name: "رغيف لحمة راس وسط", price: 70 },
+    { name: "رغيف لحمة راس كبير", price: 80 },
+
+    { name: "رغيف لسان صغير", price: 70 },
+    { name: "رغيف لسان وسط", price: 80 },
+    { name: "رغيف لسان كبير", price: 90 },
+
+    { name: "رغيف فشه صغير", price: 45 },
+    { name: "رغيف فشه وسط", price: 55 },
+    { name: "رغيف فشه كبير", price: 60 },
+
+    { name: "رغيف قلب صغير", price: 50 },
+    { name: "رغيف قلب وسط", price: 60 },
+    { name: "رغيف قلب كبير", price: 70 },
+
+    { name: "رغيف طحال صغير", price: 50 },
+    { name: "رغيف طحال وسط", price: 60 },
+    { name: "رغيف طحال كبير", price: 70 },
+
+    { name: "رغيف كبده صغير", price: 60 },
+    { name: "رغيف كبده وسط", price: 70 },
+    { name: "رغيف كبده كبير", price: 80 },
+
+    { name: "رغيف كفته + كبده + ممبار صغير", price: 50 },
+    { name: "رغيف كفته + كبده + ممبار وسط", price: 60 },
+    { name: "رغيف كفته + كبده + ممبار كبير", price: 70 },
+
+    { name: "رغيف كفته + كبده صغير", price: 60 },
+    { name: "رغيف كفته + كبده وسط", price: 70 },
+    { name: "رغيف كفته + كبده كبير", price: 80 },
+
+    { name: "رغيف ممبار صغير", price: 45 },
+    { name: "رغيف ممبار وسط", price: 50 },
+    { name: "رغيف ممبار كبير", price: 60 },
+
+    { name: "رغيف فشه + طحال صغير", price: 50 },
+    { name: "رغيف فشه + طحال وسط", price: 60 },
+    { name: "رغيف فشه + طحال كبير", price: 70 }
+  ],
+  "فته و طواجن": [
+    { name: "فته ساده وسط", price: 25 },
+    { name: "فته ساده كبير", price: 30 },
+
+    { name: "فتة كوارع وسط", price: 120 },
+    { name: "فتة كوارع كبير", price: 150 },
+
+    { name: "فتة لحمة وسط", price: 150 },
+    { name: "فتة لحمة كبير", price: 180 },
+
+    { name: "فتة لسان وسط", price: 150 },
+    { name: "فتة لسان كبير", price: 180 },
+
+    { name: "طاجن الغنام كبير", price: 250 },
+
+    { name: "طاجن عكاوي كبير", price: 200 },
+
+    { name: "طاجن كوارع بالبصل كبير", price: 180 },
+
+    { name: "طاجن لحمة كبير", price: 200 },
+
+    { name: "طاجن عكاوي بورق العنب كبير", price: 250 },
+
+    { name: "طاجن لحمة بورق العنب كبير", price: 250 },
+
+    { name: "طاجن كوارع بورق العنب كبير", price: 250 }
+  ],
+  "الطلبات": [
+    { name: "طلب مشكل الغنام صغير", price: 120 },
+    { name: "طلب مشكل الغنام وسط", price: 150 },
+    { name: "طلب مشكل الغنام كبير", price: 200 },
+
+    { name: "طلب مشكل صغير", price: 100 },
+    { name: "طلب مشكل وسط", price: 120 },
+    { name: "طلب مشكل كبير", price: 150 },
+
+    { name: "طلب لحمة راس صغير", price: 120 },
+    { name: "طلب لحمة راس وسط", price: 150 },
+    { name: "طلب لحمة راس كبير", price: 200 },
+
+    { name: "طلب لسان صغير", price: 150 },
+    { name: "طلب لسان وسط", price: 170 },
+    { name: "طلب لسان كبير", price: 200 },
+
+    { name: "طلب فشة صغير", price: 100 },
+    { name: "طلب فشة وسط", price: 120 },
+    { name: "طلب فشة كبير", price: 150 },
+
+    { name: "طلب طحال صغير", price: 120 },
+    { name: "طلب طحال وسط", price: 150 },
+    { name: "طلب طحال كبير", price: 200 },
+
+    { name: "طلب كبده صغير", price: 120 },
+    { name: "طلب كبده وسط", price: 150 },
+    { name: "طلب كبده كبير", price: 200 },
+
+    { name: "طلب ممبار صغير", price: 100 },
+    { name: "طلب ممبار وسط", price: 120 },
+    { name: "طلب ممبار كبير", price: 150 },
+
+    { name: "طلب كبده + كفته + ممبار صغير", price: 120 },
+    { name: "طلب كبده + كفته + ممبار وسط", price: 150 },
+    { name: "طلب كبده + كفته + ممبار كبير", price: 170 },
+
+    { name: "طلب كبده + كفته صغير", price: 120 },
+    { name: "طلب كبده + كفته وسط", price: 150 },
+    { name: "طلب كبده + كفته كبير", price: 200 },
+
+    { name: "طلب فشة + طحال صغير", price: 120 },
+    { name: "طلب فشة + طحال وسط", price: 150 },
+    { name: "طلب فشة + طحال كبير", price: 170 },
+
+    { name: "طلب قلب صغير", price: 150 },
+    { name: "طلب قلب وسط", price: 200 },
+    { name: "طلب قلب كبير", price: 220 },
+
+    { name: "طلب سجق صغير", price: 120 },
+    { name: "طلب سجق وسط", price: 150 },
+    { name: "طلب سجق كبير", price: 200 }
+  ],
+  "ميزان الحلويات": [
+    { name: "كيلو مشكل", price: 400 },
+    { name: "كيلو مشكل", price: 500 },
+    
+    { name: "كيلو لحمه راس", price: 450 },
+    { name: "كيلو لسان", price: 450 },
+    { name: "كيلو فشه", price: 350 },
+    { name: "كيلو طحال", price: 350 },
+    { name: "كيلو كبده", price: 450 },
+    { name: "كيلو ممبار", price: 300 },
+    { name: "كيلو كفته", price: 350 },
+    { name: "كيلو قلب", price: 400 },
+    { name: "كيلو سجق", price: 400 }
+  ],
+  "شوربة": [
+    { name: "شوربة ساده وسط", price: 20 },
+    { name: "شوربة بالعضم", price: 120 },
+    { name: "شوربة مخلية", price: 100 },
+    { name: "شوربة نخاع وسط", price: 30 },
+    { name: "شوربة عصب صغير", price: 50 },
+    { name: "شوربة عصب وسط", price: 60 },
+    { name: "شوربة عصب كبير", price: 70 },
+  ]
+};
+
+const cart = {};
+
+function renderProducts(filter = "") {
+  const groupContainer = document.getElementById("product-groups");
+  groupContainer.innerHTML = "";
+
+  for (const [categoryName, items] of Object.entries(categories)) {
+    const groupDiv = document.createElement("div");
+    groupDiv.className = "category";
+
+    const heading = document.createElement("h3");
+    heading.textContent = categoryName;
+    groupDiv.appendChild(heading);
+
+    const table = document.createElement("table");
+    const thead = document.createElement("thead");
+    thead.innerHTML = `<tr><th>المنتج</th><th>السعر</th><th>طلب</th></tr>`;
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    items.filter(p => p.name.includes(filter)).forEach((product, i) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${product.name}</td>
+        <td class="price">${product.price} ج.م</td>
+        <td><button onclick="addToCart('${categoryName}', ${i})">إضافة</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    groupDiv.appendChild(table);
+    groupContainer.appendChild(groupDiv);
+  }
+}
+
+function filterProducts() {
+  const query = document.getElementById("searchBox").value.trim();
+  renderProducts(query);
+}
+
+function addToCart(category, index) {
+  const item = categories[category][index];
+  if (!cart[item.name]) {
+    cart[item.name] = { ...item, quantity: 1 };
+  } else {
+    cart[item.name].quantity++;
+  }
+  renderCart();
+}
+
+function removeFromCart(name) {
+  if (cart[name]) {
+    cart[name].quantity--;
+    if (cart[name].quantity <= 0) delete cart[name];
+  }
+  renderCart();
+}
+
+function renderCart() {
+  const cartEl = document.getElementById("cart");
+  const totalEl = document.getElementById("total");
+  const countEl = document.getElementById("cart-count");
+  
+  cartEl.innerHTML = "";
+  let total = 0;
+  let itemCount = 0;
+
+  Object.values(cart).forEach(item => {
+    total += item.price * item.quantity;
+    itemCount += item.quantity;
+    
+    const li = document.createElement("li");
+    li.className = "cart-item";
+    li.innerHTML = `
+      <div class="cart-item-info">
+        ${item.name} <br>
+        <small>${item.price} ج.م × ${item.quantity}</small>
+      </div>
+      <div class="cart-item-actions">
+        <button onclick="addToCartFromCart('${item.name}')">+</button>
+        <button onclick="removeFromCart('${item.name}')">-</button>
+      </div>
+    `;
+    cartEl.appendChild(li);
+  });
+
+  totalEl.innerHTML = `الإجمالي: <span class="price">${total}</span> ج.م`;
+  countEl.textContent = itemCount;
+}
+
+function addToCartFromCart(name) {
+  for (const [category, items] of Object.entries(categories)) {
+    const index = items.findIndex(p => p.name === name);
+    if (index !== -1) {
+      addToCart(category, index);
+      break;
+    }
+  }
+}
+
+function checkout() {
+  let message = "طلبك من جزارة الغنام:\n\n";
+  Object.values(cart).forEach(item => {
+    message += `- ${item.name}: ${item.quantity} × ${item.price} = ${item.quantity * item.price} ج.م\n`;
+  });
+  const total = Object.values(cart).reduce((sum, item) => sum + item.price * item.quantity, 0);
+  message += `\nالإجمالي: ${total} ج.م\n\n`;
+  message += "العنوان: الونش، عين شمس الغربية، آخر شارع الترولي\n";
+  message += "شكراً لثقتكم بجزارة الحج جميل الغنام";
+  
+  const url = `https://wa.me/201120669755?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+renderProducts();
+
+// ... (كل الدوال السابقة تبقى كما هي) ...
+
+// تعديل دالة renderCart لتحديث العداد العائم
+function renderCart() {
+  const cartEl = document.getElementById("cart");
+  const totalEl = document.getElementById("total");
+  const countEl = document.getElementById("cart-count");
+  const floatingCountEl = document.getElementById("floating-cart-count");
+  
+  cartEl.innerHTML = "";
+  let total = 0;
+  let itemCount = 0;
+
+  Object.values(cart).forEach(item => {
+    total += item.price * item.quantity;
+    itemCount += item.quantity;
+    
+    const li = document.createElement("li");
+    li.className = "cart-item";
+    li.innerHTML = `
+      <div class="cart-item-info">
+        ${item.name} <br>
+        <small>${item.price} ج.م × ${item.quantity}</small>
+      </div>
+      <div class="cart-item-actions">
+        <button onclick="addToCartFromCart('${item.name}')">+</button>
+        <button onclick="removeFromCart('${item.name}')">-</button>
+      </div>
+    `;
+    cartEl.appendChild(li);
+  });
+
+  totalEl.innerHTML = `الإجمالي: <span class="price">${total}</span> ج.م`;
+  countEl.textContent = itemCount;
+  floatingCountEl.textContent = itemCount;
+}
+
+// دالة للانتقال إلى السلة
+function scrollToCart() {
+  document.querySelector('.cart-sidebar').scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+// ... (بقية الكود يبقى كما هو) ...
+
+</script>
+</body>
+</html>
